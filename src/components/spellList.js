@@ -1,12 +1,19 @@
 import React from "react";
+import {List, ListItem, ListItemText} from "@mui/material";
 
 
 function SpellList(props) {
-        return (<ul>
+        return (
+            <List>
             {props.spells.map((spell) => {
-                return <li>{spell.name}</li>
+                return <ListItem key={spell.index} disablePadding>
+                    <ListItemText>
+                        {spell.name}
+                    </ListItemText>
+                </ListItem>
             })}
-        </ul>);
+            </List>
+        );
 }
 
 export default SpellList;
