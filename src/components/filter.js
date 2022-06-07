@@ -1,9 +1,10 @@
 import React, {useEffect, useState} from "react";
 import {Container, FormControl, InputLabel, MenuItem, Select} from "@mui/material";
+import DNDClasses from "./../data/classes.json";
 
 
 function Filter(props){
-    //spells can filter by spellcasting level
+    //spells can filter by spell casting level
     //spells can filter by school
     //spells can filter by class
     const [classChoice, setClass] = useState("");
@@ -58,10 +59,11 @@ function ClassSelect(props)
                 label="Class"
                 onChange={handleChange}
             >
+
                 <MenuItem value={""}>All</MenuItem>
-                <MenuItem value={"wizard"}>Wizard</MenuItem>
-                <MenuItem value={"druid"}>Druid</MenuItem>
-                <MenuItem value={"cleric"}>Cleric</MenuItem>
+                {DNDClasses.map((c)=>{
+                    return <MenuItem key={c.index} value={c.index}>{c.name}</MenuItem>
+                })}
 
             </Select>
         </FormControl>
@@ -79,7 +81,7 @@ function SpellcastingLevelSelect(props)
     const handleChange = (event) => {
         setLvl(event.target.value);
     };
-    const spellcastingLevelList = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+    const spellcastingLevelList = [1, 2, 3, 4, 5, 6, 7, 8, 9];
     return(
         <FormControl>
             <InputLabel id="demo-simple-select-label">Spellcasting Level</InputLabel>
@@ -93,7 +95,7 @@ function SpellcastingLevelSelect(props)
                 {spellcastingLevelList.map((lvl)=>{
                 return <MenuItem key={lvl} value={lvl}>{lvl}</MenuItem>
             })}
-                <MenuItem value={0}>0</MenuItem>
+                <MenuItem value={0}>All</MenuItem>
 
             </Select>
         </FormControl>
