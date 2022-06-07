@@ -1,23 +1,29 @@
-import logo from './logo.svg';
+import axios from "axios";
+import React from "react";
 import './App.css';
+import SpellList from "./components/spellList";
+import Filter from "./components/filter";
+
+const baseURL = "https://www.dnd5eapi.co/api/";
 
 function App() {
+    const [reqURL, setReqURL] = React.useState(`${baseURL}spells`);
+  const [spells, setSpells] = React.useState([]);
+
+  React.useEffect(() => {
+    axios.get(reqURL).then(response => {
+        console.log("got "+response.data.results.length+" spells");
+        setSpells(response.data.results);
+    })
+  },[reqURL]);
+
+    const updateReqPath = (path) =>{
+        setReqURL(`${baseURL}${path}`);
+    }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        <Filter updatePath={updateReqPath} />
+        <SpellList spells={spells} />
     </div>
   );
 }
