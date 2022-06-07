@@ -30,7 +30,7 @@ function Filter(props){
 
     return (
         <Container maxWidth="sm">
-            <ClassSelect onChange={setClass}/>
+            <ClassSelect onChange={setClass} autoWidth={true}/>
             <SpellcastingLevelSelect onChange={setSpellcastingLevel} />
         </Container>
     );
@@ -58,11 +58,12 @@ function ClassSelect(props)
                 value={classChoice}
                 label="Class"
                 onChange={handleChange}
+                autoWidth={true}
             >
 
                 <MenuItem value={""}>All</MenuItem>
                 {DNDClasses.map((c)=>{
-                    return <MenuItem key={c.index} value={c.index}>{c.name}</MenuItem>
+                    return <MenuItem key={c.index} value={c.index} disabled={!c.hasSpells}>{c.name}</MenuItem>
                 })}
 
             </Select>
