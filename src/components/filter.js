@@ -12,7 +12,7 @@ function Filter(props){
 
     useEffect(()=>{
         //build the spell list
-        if(classChoice === "")
+        if(classChoice === "" || classChoice === "all")
         {
              props.updatePath("spells");
             return;//break?
@@ -59,9 +59,12 @@ function ClassSelect(props)
                 label="Class"
                 onChange={handleChange}
                 autoWidth={true}
+                sx={{
+                    minWidth: 100
+                }}
             >
 
-                <MenuItem value={""}>All</MenuItem>
+                <MenuItem value={"all"}>All</MenuItem>
                 {DNDClasses.map((c)=>{
                     return <MenuItem key={c.index} value={c.index} disabled={!c.hasSpells}>{c.name}</MenuItem>
                 })}
@@ -92,6 +95,9 @@ function SpellcastingLevelSelect(props)
                 value={lvlChoice}
                 label="Spellcasting Level"
                 onChange={handleChange}
+                sx={{
+                    minWidth:35
+                }}
             >
                 {spellcastingLevelList.map((lvl)=>{
                 return <MenuItem key={lvl} value={lvl}>{lvl}</MenuItem>

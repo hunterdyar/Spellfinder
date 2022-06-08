@@ -41,10 +41,8 @@ function App() {
 
     const updateReqPath = (path) =>{
         setReqURL(path);
-        console.log("path: "+path);
     }
     const selectSpell = (s) =>{
-        console.log("app selected spell: "+s.name);
         setSpellURL(s.url);
     }
   return (
@@ -53,10 +51,10 @@ function App() {
         <CssBaseline />
             <Drawer variant={"permanent"} anchor={"left"} sx={{
                 width: drawerWidth,
-                flexShrink: 0,
+                minWidth: drawerWidth,
                 maxWidth: drawerWidth
-            }}><Container>
-                <SpellList spells={spells} onClick={selectSpell}/>
+            }}><Container spacing={0}>
+                <SpellList spells={spells} onClick={selectSpell} width={drawerWidth}/>
             </Container>
             </Drawer>
             <Box component="main" sx={{p: 3, flexGrow: 4, paddingLeft: `${drawerWidth}px`}}>
@@ -65,8 +63,6 @@ function App() {
                 <Filter updatePath={updateReqPath} />
                     <p><em>Only spells found in the <a href={"https://media.wizards.com/2016/downloads/DND/SRD-OGL_V5.1.pdf"}>SRD</a> are available here.</em></p>
                 </Card>
-            </Box>
-            <Box component="main" sx={{p: 3, flexGrow: 4,paddingLeft: `${drawerWidth}px`}}>
                 <SpellView spell={spell} />
             </Box>
         </Box>

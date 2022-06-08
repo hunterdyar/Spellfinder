@@ -20,6 +20,7 @@ function SpellView({spell}){
                 </div>
                     {/*Todo: Damage with damage level dropdown*/}
                     {/*Todo: Area of Effect Component*/}
+                <Divider />
                 <p><span>Duration: </span><strong>{spell.duration}</strong></p>
                 <p><span>Components: </span><strong>{spell.components.join(', ')}</strong><em>{(spell.material !== undefined) ? ` (${spell.material})` : ""}</em></p>
                 <p>School of <strong>{spell.school.name}</strong></p>
