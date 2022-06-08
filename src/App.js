@@ -6,11 +6,11 @@ import Filter from "./components/filter";
 import allSpells from "./testingData";
 import SpellView from "./components/spell";
 
-import {Box, Container, CssBaseline, Drawer, Paper} from "@mui/material";
+import {Box, Card, Container, CssBaseline, Drawer} from "@mui/material";
 const baseURL = "https://www.dnd5eapi.co";
 
 //Display Settings
-const drawerWidth=340;
+const drawerWidth=250;
 
 function App() {
     const [reqURL, setReqURL] = React.useState(`spells`);
@@ -53,20 +53,21 @@ function App() {
         <CssBaseline />
             <Drawer variant={"permanent"} anchor={"left"} sx={{
                 width: drawerWidth,
-                flexShrink: 0
+                flexShrink: 0,
+                maxWidth: drawerWidth
             }}><Container>
                 <SpellList spells={spells} onClick={selectSpell}/>
             </Container>
             </Drawer>
-            <Paper spacing={4} component="main" sx={{p: 3, paddingLeft: `${drawerWidth}px`}}>
+            <Box component="main" sx={{p: 3, flexGrow: 4, paddingLeft: `${drawerWidth}px`}}>
+                <Card>
                 <h1>d&d 5e spellfinder.</h1>
                 <Filter updatePath={updateReqPath} />
-            </Paper>
-            <Paper component="main" sx={{p: 3, paddingLeft: `${drawerWidth}px`}}>
+                    <p><em>Only spells found in the <a href={"https://media.wizards.com/2016/downloads/DND/SRD-OGL_V5.1.pdf"}>SRD</a> are available here.</em></p>
+                </Card>
+            </Box>
+            <Box component="main" sx={{p: 3, flexGrow: 4,paddingLeft: `${drawerWidth}px`}}>
                 <SpellView spell={spell} />
-            </Paper>
-            <Box sx={{flexGrow:1}}>
-
             </Box>
         </Box>
     </div>

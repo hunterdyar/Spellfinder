@@ -3,9 +3,11 @@ import {Card, Container, Divider} from "@mui/material";
 function SpellView({spell}){
     if(typeof spell === "undefined")
     {
-        return <Container>
-            <h1>No Spell Selected</h1>
-        </Container>
+        return <Card>
+            <div style={{opacity: 0.2}}>
+                <h1>No Spell Selected</h1>
+            </div>
+        </Card>
     }else {
         return (
             <Card>
