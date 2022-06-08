@@ -6,7 +6,7 @@ import Filter from "./components/filter";
 import allSpells from "./testingData";
 import SpellView from "./components/spell";
 
-import {Box, Card, Container, CssBaseline, Drawer} from "@mui/material";
+import {Box, Card, CssBaseline, Drawer} from "@mui/material";
 const baseURL = "https://www.dnd5eapi.co";
 
 //Display Settings
@@ -53,9 +53,9 @@ function App() {
                 width: drawerWidth,
                 minWidth: drawerWidth,
                 maxWidth: drawerWidth
-            }}><Container spacing={0}>
+            }}><Box>
                 <SpellList spells={spells} onClick={selectSpell} width={drawerWidth}/>
-            </Container>
+            </Box>
             </Drawer>
             <Box component="main" sx={{p: 3, flexGrow: 4, paddingLeft: `${drawerWidth}px`}}>
                 <Card>

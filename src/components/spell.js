@@ -1,4 +1,4 @@
-import {Card, Container, Divider} from "@mui/material";
+import {Box, Card, Container, Divider} from "@mui/material";
 
 function SpellView({spell}){
     if(typeof spell === "undefined")
@@ -15,9 +15,9 @@ function SpellView({spell}){
                 <Divider />
                 <Container align={"left"}>
                 <p><strong>Casting Time: </strong><span>{spell.casting_time}</span></p>
-                <div>
+                <Box>
                     {spell.desc.map(d=> <p key={d}>{d}</p>)}
-                </div>
+                </Box>
                     {/*Todo: Damage with damage level dropdown*/}
                     {/*Todo: Area of Effect Component*/}
                 <Divider />

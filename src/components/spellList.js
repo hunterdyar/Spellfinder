@@ -45,13 +45,16 @@ function PopulatedSpellList(props) {
         setQuery("");
     }
         return (
-            <List>
+            <List sx={{width: props.width}}>
                 <ListSubheader disableGutters>
-                    <TextField id="standard-basic" label="Search" variant="standard" type="search" fullWidth
+                    <TextField id="standard-basic" label="  Search" variant="standard" type="search" fullWidth
                        value={query}
                         onChange={e => setQuery(e.target.value)}
                        InputProps={{
-                           endAdornment: filtered ? <InputAdornment position="start" onClick={clearQuery}>x</InputAdornment> : null,
+                           endAdornment: filtered ? <InputAdornment position="start" onClick={clearQuery} sx={{paddingRight:"12px"}}><h2>x</h2></InputAdornment> : null,
+                       }}
+                       sx={{
+
                        }}
                     />
                 </ListSubheader>
@@ -71,7 +74,11 @@ function SpellListItem({spell, onClick})
     const onSelectSpell = ()=>{
         onClick(spell);
     }
-    return (<ListItem  disablePadding component="a" onClick={onSelectSpell}>
+    return (<ListItem component="a" onClick={onSelectSpell} sx={{
+        paddingTop:0,
+        paddingBottom:0,
+
+    }}>
         <ListItemText>
             {spell.name}
         </ListItemText>
