@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import Fuse from "fuse.js";
-import allSpells from "../testingData";
+import allSpells from "../data/defaultData";
 import axios from "axios";
 
 const baseURL = "https://www.dnd5eapi.co";
