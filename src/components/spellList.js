@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import {List, ListItem, ListItemText, ListSubheader, TextField} from "@mui/material";
+import {List, ListItem, ListItemButton, ListItemText, ListSubheader, TextField} from "@mui/material";
 import Fuse from "fuse.js";
 import InputAdornment from '@mui/material/InputAdornment';
 
@@ -74,7 +74,7 @@ function SpellListItem({spell, onClick})
     const onSelectSpell = ()=>{
         onClick(spell);
     }
-    return (<ListItem component="a" onClick={onSelectSpell} sx={{
+    return (<ListItemButton component="a" onClick={onSelectSpell} sx={{
         paddingTop:0,
         paddingBottom:0,
 
@@ -82,7 +82,7 @@ function SpellListItem({spell, onClick})
         <ListItemText>
             {spell.name}
         </ListItemText>
-    </ListItem>)
+    </ListItemButton>)
 }
 
 export default SpellList;
