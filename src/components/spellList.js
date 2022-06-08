@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import {List, ListItem, ListItemButton, ListItemText, ListSubheader, TextField} from "@mui/material";
-import Fuse from "fuse.js";
 import InputAdornment from '@mui/material/InputAdornment';
+import {SpellListHook} from '../hooks/spellfinderHooks';
 
 function SpellList(props)
 {
@@ -19,26 +19,10 @@ function SpellList(props)
     }
 }
 
+
 function PopulatedSpellList(props) {
-    const [filtered, setFiltered] = useState(false);
-    const [query,setQuery] = useState("");
-    const [result, setResult] = useState(props.spells);
-    const fuse = new Fuse(props.spells, {
-        distance: 30,
-        threshold: 0.49,
-        keys: ["name", "index"]
-    });
-    useEffect(() =>{
-        console.log("effect");
-        if(query === "") {
-            setResult(props.spells);
-            setFiltered(false)
-        }else {
-            setResult(fuse.search(query));
-            setFiltered(true)
-        }
-        console.log("q",query,result);
-    },[query, props.spells]);
+
+    const [result, query,setQuery, filtered] = SpellListHook(props.spells);
 
     const clearQuery = ()=>
     {
