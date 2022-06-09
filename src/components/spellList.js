@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React from "react";
 import {List, ListItem, ListItemButton, ListItemText, ListSubheader, TextField} from "@mui/material";
 import InputAdornment from '@mui/material/InputAdornment';
 import {SpellListHook} from '../hooks/spellfinderHooks';

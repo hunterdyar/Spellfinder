@@ -1,6 +1,7 @@
 import {Box, Card, Container, Divider} from "@mui/material";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from 'remark-gfm'
+import React from "react";
 
 function SpellView({spell}){
     if(typeof spell === "undefined")
