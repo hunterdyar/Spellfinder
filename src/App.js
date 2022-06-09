@@ -4,16 +4,22 @@ import SpellList from "./components/spellList";
 import Filter from "./components/filter";
 import SpellView from "./components/spell";
 
-import {Box, Card, CssBaseline, Drawer} from "@mui/material";
+import {Box, Card, createTheme, CssBaseline, Drawer, ThemeProvider} from "@mui/material";
 import {SpellfinderRequest} from "./hooks/spellfinderHooks";
 
 //Display Settings
 const drawerWidth=250;
+const theme = createTheme({
+    palette: {
+        mode: 'dark',
+    },
+});
 
 function App() {
     const [spell, spells,selectSpell,updateReqPath] = SpellfinderRequest();
   return (
     <div className="App">
+        <ThemeProvider theme={theme}>
         <Box sx={{display: 'flex', flexDirection: "row", flexWrap: "wrap"}}>
         <CssBaseline />
             <Drawer variant={"permanent"} anchor={"left"} sx={{
@@ -33,6 +39,7 @@ function App() {
                 <SpellView spell={spell} />
             </Box>
         </Box>
+        </ThemeProvider>
     </div>
   );
 }
